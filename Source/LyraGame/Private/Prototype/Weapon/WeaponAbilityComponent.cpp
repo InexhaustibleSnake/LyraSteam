@@ -2,6 +2,7 @@
 
 #include "Prototype/Weapon/WeaponAbilityComponent.h"
 #include "Prototype/Weapon/Abilities/WeaponBaseShotAbility.h"
+#include "Net/UnrealNetwork.h"
 
 UWeaponAbilityComponent::UWeaponAbilityComponent()
 {
@@ -24,6 +25,13 @@ void UWeaponAbilityComponent::BeginPlay()
     Super::BeginPlay();
 
     GrandInitialAbilities();
+}
+
+void UWeaponAbilityComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const 
+{
+    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+    DOREPLIFETIME_CONDITION(UWeaponAbilityComponent, Ammo, COND_OwnerOnly);
 }
 
 void UWeaponAbilityComponent::GrandInitialAbilities()

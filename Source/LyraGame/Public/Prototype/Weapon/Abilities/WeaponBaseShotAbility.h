@@ -14,4 +14,5 @@ class LYRAGAME_API UWeaponBaseShotAbility : public UGameplayAbility
 public:
     UWeaponBaseShotAbility();
 
+    APawn* GetOwnerPawn() const;
 };

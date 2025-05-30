@@ -20,6 +20,7 @@ public:
 
 protected:
     virtual void BeginPlay() override;
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
     void GrandInitialAbilities();
 
@@ -28,6 +29,12 @@ protected:
     UFUNCTION(Server, Reliable)
     void ServerMakeDefaultShot();
     void ServerMakeDefaultShot_Implementation();
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    int32 MaxAmmo = 90;
+
+    UPROPERTY(Replicated, EditAnywhere, BlueprintReadWrite) 
+    int32 Ammo = 0;
 
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Shot")
     TSubclassOf<UWeaponBaseShotAbility> DefaultShotAbilityClass;
