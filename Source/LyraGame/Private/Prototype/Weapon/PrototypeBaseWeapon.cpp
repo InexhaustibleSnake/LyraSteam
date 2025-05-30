@@ -5,17 +5,38 @@
 
 APrototypeBaseWeapon::APrototypeBaseWeapon()
 {
-	PrimaryActorTick.bCanEverTick = false;
+    PrimaryActorTick.bCanEverTick = false;
 
-	bReplicates = true;
+    bReplicates = true;
 
-	WeaponAbilityComponent = CreateDefaultSubobject<UWeaponAbilityComponent>("WeaponAbilityComponent");
+    WeaponAbilityComponent = CreateDefaultSubobject<UWeaponAbilityComponent>("WeaponAbilityComponent");
+    WeaponAbilityComponent->SetIsReplicated(true);
+}
+
+void APrototypeBaseWeapon::DefaultAttackStart()
+{
+    if (!HasAuthority())
+    {
+        ServerDefaultAttackStart();
+        return;
+    }
+
+    if (!WeaponAbilityComponent) return;
+
+    WeaponAbilityComponent->MakeDefaultShot();
 }
 
 void APrototypeBaseWeapon::BeginPlay()
 {
-	Super::BeginPlay();
-	
+    Super::BeginPlay();
+
+    if (WeaponAbilityComponent)
+    {
+        WeaponAbilityComponent->InitAbilityActorInfo(this, this);
+    }
 }
 
-
+void APrototypeBaseWeapon::ServerDefaultAttackStart_Implementation()
+{
+    DefaultAttackStart();
+}

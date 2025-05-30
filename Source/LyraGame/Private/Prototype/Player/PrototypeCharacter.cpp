@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Prototype/Player/PrototypeCharacter.h"
+#include "Prototype/Weapon/PrototypeBaseWeapon.h"
 
 APrototypeCharacter::APrototypeCharacter()
 {
@@ -53,6 +54,11 @@ void APrototypeCharacter::MouseY(float Amount)
     AddControllerPitchInput(Amount);
 }
 
-void APrototypeCharacter::Shoot() {}
+void APrototypeCharacter::Shoot()
+{
+    if (!CurrentWeapon) return;
+
+    CurrentWeapon->DefaultAttackStart();
+}
 
 void APrototypeCharacter::AltShot() {}

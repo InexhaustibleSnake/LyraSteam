@@ -32,6 +32,6 @@ protected:
     void Shoot();
     void AltShot();
 
-    UPROPERTY()
-    APrototypeBaseWeapon* CurrentWeapon;
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+    TObjectPtr<APrototypeBaseWeapon> CurrentWeapon;
 };

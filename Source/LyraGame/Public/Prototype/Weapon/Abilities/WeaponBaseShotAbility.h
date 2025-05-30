@@ -9,9 +9,9 @@
 UCLASS()
 class LYRAGAME_API UWeaponBaseShotAbility : public UGameplayAbility
 {
-	GENERATED_BODY()
-	
-	
-	
-	
+    GENERATED_BODY()
+
+public:
+    UWeaponBaseShotAbility();
+
 };

@@ -16,8 +16,15 @@ class LYRAGAME_API APrototypeBaseWeapon : public AActor
 public:
     APrototypeBaseWeapon();
 
+    void DefaultAttackStart();
+    void DefaultAttackStop();
+
 protected:
     virtual void BeginPlay() override;
+
+    UFUNCTION(Server, Reliable)
+    void ServerDefaultAttackStart();
+    void ServerDefaultAttackStart_Implementation();
 
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Components")
     TObjectPtr<UWeaponAbilityComponent> WeaponAbilityComponent;

@@ -2,6 +2,7 @@
 
 #include "Prototype/Weapon/Abilities/WeaponBaseShotAbility.h"
 
-
-
-
+UWeaponBaseShotAbility::UWeaponBaseShotAbility() 
+{
+    InstancingPolicy = EGameplayAbilityInstancingPolicy::InstancedPerActor;
+}
