@@ -288,6 +288,14 @@ void ULyraHeroComponent::InitializePlayerInput(UInputComponent* PlayerInputCompo
 					LyraIC->BindNativeAction(InputConfig, LyraGameplayTags::InputTag_Look_Stick, ETriggerEvent::Triggered, this, &ThisClass::Input_LookStick, /*bLogIfNotFound=*/ false);
 					LyraIC->BindNativeAction(InputConfig, LyraGameplayTags::InputTag_Crouch, ETriggerEvent::Triggered, this, &ThisClass::Input_Crouch, /*bLogIfNotFound=*/ false);
 					LyraIC->BindNativeAction(InputConfig, LyraGameplayTags::InputTag_AutoRun, ETriggerEvent::Triggered, this, &ThisClass::Input_AutoRun, /*bLogIfNotFound=*/ false);
+
+					if (!PawnExtComp) return;
+
+					if (ULyraAbilitySystemComponent* LyraASC = PawnExtComp->GetLyraAbilitySystemComponent())
+					{
+                        LyraIC->BindNativeAction(InputConfig, LyraGameplayTags::InputTag_Confirm, ETriggerEvent::Triggered, LyraASC, &UAbilitySystemComponent::LocalInputConfirm, false);
+                        LyraIC->BindNativeAction(InputConfig, LyraGameplayTags::InputTag_Confirm, ETriggerEvent::Completed, LyraASC, &UAbilitySystemComponent::LocalInputConfirm, false);
+					}
 				}
 			}
 		}
