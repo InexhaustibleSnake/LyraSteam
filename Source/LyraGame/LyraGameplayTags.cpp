@@ -24,6 +24,8 @@ namespace LyraGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(InputTag_Crouch, "InputTag.Crouch", "Crouch input.");
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(InputTag_AutoRun, "InputTag.AutoRun", "Auto-run input.");
 
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(InputTag_AltAttack, "InputTag.AltAttack", "Alternative Attack");
+
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(InputTag_Confirm, "InputTag.Confirm", "Confirm fire input.");
     UE_DEFINE_GAMEPLAY_TAG_COMMENT(InputTag_Cancel, "InputTag.Cancel", "Cancel fire input.");
 
