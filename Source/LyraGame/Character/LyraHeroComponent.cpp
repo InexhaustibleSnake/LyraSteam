@@ -296,11 +296,7 @@ void ULyraHeroComponent::InitializePlayerInput(UInputComponent* PlayerInputCompo
                         LyraIC->BindNativeAction(InputConfig, LyraGameplayTags::InputTag_Confirm, ETriggerEvent::Triggered, LyraASC, &UAbilitySystemComponent::LocalInputConfirm, false);
                         LyraIC->BindNativeAction(InputConfig, LyraGameplayTags::InputTag_Confirm, ETriggerEvent::Completed, LyraASC, &UAbilitySystemComponent::LocalInputConfirm, false);
 
-                        LyraIC->BindNativeAction(InputConfig, LyraGameplayTags::InputTag_Cancel, ETriggerEvent::Triggered, LyraASC,
-                            &UAbilitySystemComponent::LocalInputConfirm, false);
-
-						   LyraIC->BindNativeAction(InputConfig, LyraGameplayTags::InputTag_Cancel, ETriggerEvent::Completed, LyraASC,
-                            &UAbilitySystemComponent::LocalInputConfirm, false);
+                        LyraIC->BindNativeAction(InputConfig, LyraGameplayTags::InputTag_Cancel, ETriggerEvent::Triggered, LyraASC, &UAbilitySystemComponent::LocalInputCancel, true);
 					}
 				}
 			}
