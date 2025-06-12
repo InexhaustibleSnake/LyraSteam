@@ -15,6 +15,7 @@ class UGameplayEffect;
 class ULyraAbilitySystemComponent;
 class ULyraGameplayAbility;
 class UObject;
+class ABaseWeaponTrigger;
 
 
 /**
@@ -32,6 +33,9 @@ public:
 	// Gameplay ability to grant.
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<ULyraGameplayAbility> Ability = nullptr;
+	
+	UPROPERTY(EditDefaultsOnly)
+    TSubclassOf<ABaseWeaponTrigger> WeaponTriggerClass = nullptr;
 
 	// Level of ability to grant.
 	UPROPERTY(EditDefaultsOnly)

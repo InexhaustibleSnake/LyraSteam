@@ -38,6 +38,7 @@ public:
 	}
 	
 	/** Returns the current spread angle (in degrees, diametrical) */
+    UFUNCTION(BlueprintCallable, Category = "LyraWeaponInstance")
 	float GetCalculatedSpreadAngle() const
 	{
 		return CurrentSpreadAngle;

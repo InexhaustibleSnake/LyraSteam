@@ -22,6 +22,7 @@ class ULyraAbilityCost;
 class ULyraAbilitySystemComponent;
 class ULyraCameraMode;
 class ULyraHeroComponent;
+class ABaseWeaponTrigger;
 class UObject;
 struct FFrame;
 struct FGameplayAbilityActorInfo;
@@ -100,6 +101,11 @@ class LYRAGAME_API ULyraGameplayAbility : public UGameplayAbility
 public:
 
 	ULyraGameplayAbility(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
+
+	void SetTriggerClass(const TSubclassOf<ABaseWeaponTrigger> NewTriggerClass);
+
+	UFUNCTION(BlueprintCallable)
+	TSubclassOf<ABaseWeaponTrigger> GetTriggerClass() const { return TriggerClass; }
 
 	UFUNCTION(BlueprintCallable, Category = "Lyra|Ability")
 	ULyraAbilitySystemComponent* GetLyraAbilitySystemComponentFromActorInfo() const;
@@ -210,4 +216,7 @@ protected:
 
 	// Current camera mode set by the ability.
 	TSubclassOf<ULyraCameraMode> ActiveCameraMode;
+
+	UPROPERTY()
+	TSubclassOf<ABaseWeaponTrigger> TriggerClass;
 };

@@ -49,6 +49,11 @@ ULyraGameplayAbility::ULyraGameplayAbility(const FObjectInitializer& ObjectIniti
 	ActiveCameraMode = nullptr;
 }
 
+void ULyraGameplayAbility::SetTriggerClass(const TSubclassOf<ABaseWeaponTrigger> NewTriggerClass)
+{
+    TriggerClass = NewTriggerClass;
+}
+
 ULyraAbilitySystemComponent* ULyraGameplayAbility::GetLyraAbilitySystemComponentFromActorInfo() const
 {
 	return (CurrentActorInfo ? Cast<ULyraAbilitySystemComponent>(CurrentActorInfo->AbilitySystemComponent.Get()) : nullptr);
