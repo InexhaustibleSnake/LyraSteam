@@ -93,18 +93,19 @@ void ULyraAbilitySet::GiveToAbilitySystem(
 
         ULyraGameplayAbility* AbilityCDO = AbilityToGrant.Ability->GetDefaultObject<ULyraGameplayAbility>();
 
-        if (AbilityCDO && GrantedGameplayAbilities.IsValidIndex(AbilityIndex))
-        {
-            const auto TriggerClass = GrantedGameplayAbilities[AbilityIndex].WeaponTriggerClass;
-
-            AbilityCDO->SetTriggerClass(TriggerClass);
-        }
-
         FGameplayAbilitySpec AbilitySpec(AbilityCDO, AbilityToGrant.AbilityLevel);
 
         AbilitySpec.SourceObject = SourceObject;
 
         AbilitySpec.DynamicAbilityTags.AddTag(AbilityToGrant.InputTag);
+
+        auto LyraAbility = Cast<ULyraGameplayAbility>(AbilitySpec.Ability);
+        if (LyraAbility && GrantedGameplayAbilities.IsValidIndex(AbilityIndex))
+        {
+            const auto TriggerClass = GrantedGameplayAbilities[AbilityIndex].WeaponTriggerClass;
+
+            LyraAbility->SetTriggerClass(TriggerClass);
+        }
 
         const FGameplayAbilitySpecHandle AbilitySpecHandle = LyraASC->GiveAbility(AbilitySpec);
 
