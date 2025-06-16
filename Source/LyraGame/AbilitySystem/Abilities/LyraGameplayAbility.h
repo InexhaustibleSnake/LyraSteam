@@ -217,6 +217,6 @@ protected:
 	// Current camera mode set by the ability.
 	TSubclassOf<ULyraCameraMode> ActiveCameraMode;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	TSubclassOf<ABaseWeaponTrigger> TriggerClass;
 };

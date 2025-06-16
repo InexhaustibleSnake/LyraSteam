@@ -7,6 +7,7 @@
 #include "BaseWeaponTrigger.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnFireTriggerDelegate);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnFireEndedDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnFireCanceledTriggerDelegate);
 
 UCLASS(Abstract)
@@ -17,15 +18,25 @@ class LYRAGAME_API ABaseWeaponTrigger : public AActor
 public:
     ABaseWeaponTrigger();
 
-    UPROPERTY(BlueprintAssignable, BlueprintCallable)
-    FOnFireTriggerDelegate OnFireTriggerDelegate;
+    UFUNCTION(BlueprintCallable)
+    bool GetEndAbilityOnFire() const { return EndAbilityOnFire; }
 
     UPROPERTY(BlueprintAssignable, BlueprintCallable)
-    FOnFireCanceledTriggerDelegate OnFireCanceledTriggerDelegate;
+    FOnFireTriggerDelegate OnFireTrigger;
+
+    UPROPERTY(BlueprintAssignable, BlueprintCallable)
+    FOnFireEndedDelegate OnFireEnded;
+
+    UPROPERTY(BlueprintAssignable, BlueprintCallable)
+    FOnFireCanceledTriggerDelegate OnFireCanceled;
 
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnFireStart();
 
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-    void OnFireCancel();
+    void OnFireInputReleased();
+
+    protected:
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+    bool EndAbilityOnFire = false;
 };

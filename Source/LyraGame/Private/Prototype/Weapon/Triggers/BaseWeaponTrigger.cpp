@@ -9,4 +9,4 @@ ABaseWeaponTrigger::ABaseWeaponTrigger()
 
 void ABaseWeaponTrigger::OnFireStart_Implementation() {}
 
-void ABaseWeaponTrigger::OnFireCancel_Implementation() {}
+void ABaseWeaponTrigger::OnFireInputReleased_Implementation() {}

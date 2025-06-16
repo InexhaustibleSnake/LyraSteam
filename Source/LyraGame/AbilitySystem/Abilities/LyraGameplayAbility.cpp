@@ -18,6 +18,7 @@
 #include "Physics/PhysicalMaterialWithTags.h"
 #include "GameFramework/PlayerState.h"
 #include "Camera/LyraCameraMode.h"
+#include "Prototype/Weapon/Triggers/BaseWeaponTrigger.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(LyraGameplayAbility)
 

@@ -24,6 +24,8 @@ ABaseWeaponProjectile::ABaseWeaponProjectile()
 	ProjectileMovementComponent->InitialSpeed = 1500.0f;
 
 	bReplicates = true;
+
+    InitialLifeSpan = 5.0f;
 }
 
 void ABaseWeaponProjectile::BeginPlay()
